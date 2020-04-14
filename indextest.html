@@ -21,12 +21,12 @@ $db = "rise";
 $hostname = "localhost";
 $port = "3306";
 
-$connection = mysqli_connect($hostname,$port,$username,$password,$db);; // Establishing Connection with Server
+$connection = mysqli_connect($hostname,$port,$username,$password); // Establishing Connection with Server
 $db = mysql_select_db("rise", $connection); // Selecting Database
 //MySQL Query to read data
-$query = mysql_query("select * from Devices", $connection);
+$query = mysql_query("SELECT * FROM Devices", $connection);
 while ($row = mysql_fetch_array($query)) {
-echo "<b><a href="readphp.php?id={$row['id']}">{$row['name']}</a></b>";
+echo "<b><a href="readphp.php?id={$row['name']}">{$row['description']}</a></b>";
 echo "<br />";
 }
 ?>
@@ -34,7 +34,7 @@ echo "<br />";
 <?php
 if (isset($_GET['id'])) {
 $id = $_GET['id'];
-$query1 = mysql_query("select * from employee where employee_id=$id", $connection);
+$query1 = mysql_query("SELECT * FROM Devices where device_eui=$id", $connection);
 while ($row1 = mysql_fetch_array($query1)) {
 ?>
 <div class="form">
